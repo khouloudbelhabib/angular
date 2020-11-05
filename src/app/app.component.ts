@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from './token-storage.service';
 
 @Component({
@@ -6,7 +6,7 @@ import {TokenStorageService} from './token-storage.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent  implements OnInit{
   title = 'auditappangular';
   private roles: string[];
   isLoggedIn = false;

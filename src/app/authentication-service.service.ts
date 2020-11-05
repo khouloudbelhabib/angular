@@ -17,6 +17,10 @@ export class AuthenticationServiceService {
   constructor(private http: HttpClient) { }
 
   login(credentials): Observable<any> {
+    const headers = new Headers({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${credentials}`
+    });
     return this.http.post(AUTH_API + 'login', {
       username: credentials.username,
       password: credentials.password
