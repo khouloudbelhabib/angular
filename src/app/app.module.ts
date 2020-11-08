@@ -9,9 +9,10 @@ import { NewRisqueComponent } from './new-risque/new-risque.component';
 import { RegistrationComponent } from './registration/registration.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {AuthenticationServiceService} from './authentication-service.service';
 import {TokenStorageService} from './token-storage.service';
+import {AuthInterceptor} from './_helpers/authInterceptor';
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'risque', component: RegistrationComponent},
@@ -34,7 +35,8 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     FormsModule,
   ],
-  providers: [ AuthenticationServiceService, TokenStorageService],
+  providers: [
+    AuthenticationServiceService, TokenStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

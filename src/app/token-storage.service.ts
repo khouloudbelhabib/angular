@@ -1,12 +1,17 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
+import {UserService} from './user.service';
+
 const TOKEN_KEY = 'auth-token';
 const USER_KEY = 'auth-user';
+
 @Injectable({
   providedIn: 'root'
 })
 export class TokenStorageService {
 
-  constructor() { }
+  constructor() {
+  }
+
   // tslint:disable-next-line:typedef
   signOut() {
     window.sessionStorage.clear();
@@ -25,12 +30,10 @@ export class TokenStorageService {
   // tslint:disable-next-line:typedef
   public saveUser(user) {
     window.sessionStorage.removeItem(USER_KEY);
-    window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    window.sessionStorage.setItem(USER_KEY, user);
   }
-
-  // tslint:disable-next-line:typedef
-  public getUser() {
-    return JSON.parse(sessionStorage.getItem(USER_KEY));
+  public getUsername(): string {
+    return sessionStorage.getItem(USER_KEY);
   }
 
 

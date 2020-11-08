@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
-const API_URL = 'http://localhost:8090/authentification/test/';
+import {TokenStorageService} from './token-storage.service';
+import {User} from './model/User';
+const API_URL = 'http://localhost:8090/user/';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient) { }
+  headers = new HttpHeaders();
+
+  constructor(private http: HttpClient, private token: TokenStorageService) { }
   getPublicContent(): Observable<any> {
     return this.http.get(API_URL + 'all', { responseType: 'text' });
   }
@@ -16,8 +20,15 @@ export class UserService {
     return this.http.get(API_URL + 'user', { responseType: 'text' });
   }
 
+  getUserByUsername(username): any{
+    this.headers.append('Accept', 'application/json');
+    const token = this.token.getToken();
+    const options = { headers: new HttpHeaders({ Authorization: 'Bearer ' + token })};
+    return this.http.get(API_URL + 'getByUsername/' + username , options);
+  }
 
   getAdminBoard(): Observable<any> {
     return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
+
 }

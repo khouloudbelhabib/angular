@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {TokenStorageService} from './token-storage.service';
+import {UserService} from './user.service';
 
 @Component({
   selector: 'app-root',
@@ -13,22 +14,29 @@ export class AppComponent  implements OnInit{
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
-  constructor(private tokenStorageService: TokenStorageService) { }
+  private user: any;
+  constructor(private tokenStorageService: TokenStorageService, private userService: UserService) { }
 
   // tslint:disable-next-line:typedef use-lifecycle-interface
   ngOnInit() {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
 
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
+    if (this.tokenStorageService.getToken()) {
+      this.getUserConnected();
 
       this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
       this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-      this.username = user.username;
+      this.username = this.user.username;
     }
   }
+  getUserConnected(): void {
+    if ( this.tokenStorageService.getUsername()) {
+      console.log('this this.tokenStorageService.getUsername()', this.tokenStorageService.getUsername());
 
+      this.user = this.userService.getUserByUsername(this.tokenStorageService.getUsername());
+      console.log('this user', this.user);
+      this.roles = this.user.role[0];
+    }
+  }
   // tslint:disable-next-line:typedef
   logout() {
     this.tokenStorageService.signOut();
