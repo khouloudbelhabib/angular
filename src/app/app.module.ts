@@ -12,6 +12,15 @@ import { RegistrationComponent } from './component/registration/registration.com
 import { RisqueComponent } from './component/risque/risque.component';
 import { AuthenticationServiceService } from './service/authentication-service.service';
 import { TokenStorageService } from './service/token-storage.service';
+import { FullCalendarModule } from '@fullcalendar/angular';
+import { AjoutcommentaireComponent } from './ajoutcommentaire/ajoutcommentaire.component';
+import { EditrisqueComponent } from './editrisque/editrisque.component';
+import { ListRecommendationComponent } from './list-recommendation/list-recommendation.component';
+import { ListcommentaireComponent } from './listcommentaire/listcommentaire.component';
+import { ListedeclientComponent } from './listedeclient/listedeclient.component';
+import { ListederendezvousComponent } from './listederendezvous/listederendezvous.component';
+import { ReclamationComponent } from './reclamation/reclamation.component';
+import { RendezvousComponent } from './rendezvous/rendezvous.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -26,7 +35,15 @@ const appRoutes: Routes = [
     LoginComponent,
     RisqueComponent,
     NewRisqueComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    EditrisqueComponent,
+    AjoutcommentaireComponent,
+    ListcommentaireComponent,
+    ReclamationComponent,
+    ListRecommendationComponent,
+    RendezvousComponent,
+    ListedeclientComponent,
+    ListederendezvousComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +51,8 @@ const appRoutes: Routes = [
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
+    BrowserModule,
+    FullCalendarModule,
   ],
   providers: [
     {

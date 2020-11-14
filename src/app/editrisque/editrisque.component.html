@@ -1,9 +1,7 @@
-<p> ajouter un niveau risque </p>
-<div class="container">
-<form #addrisqueform="ngForm" (ngSubmit)="addrisqueformsubmit()">
+<form #addrisqueform="ngForm" (ngSubmit)="updaterisqueformsubmit()">
   <div class="form-group">
     <label for="id">id</label>
-    <input type="text" class="form-control" required  [(ngModel)]="risque.id" name="id">
+    <input type="text" class="form-control" required  [(ngModel)]="risque.id" name="id" disabled>
   </div>
   <div class="form-group">
     <label for="nom">Nom risque</label>
@@ -21,7 +19,8 @@
     <label for="solution">Recomandation</label>
     <input type="text" class="form-control" required  [(ngModel)]="risque.solution" name="solution">
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <button type="submit" class="btn btn-primary">modifier</button>
   <button type="submit" class="btn btn-primary" (click)="gotolist()">liste de Risque</button>
 </form>
-</div>
+
+

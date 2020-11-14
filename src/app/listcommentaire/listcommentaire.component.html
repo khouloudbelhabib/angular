@@ -1,0 +1,19 @@
+<table class="table table-bordered table-dark">
+<thead>
+<tr>
+  <th scope="col"></th>
+  <th scope="col">client</th>
+  <th scope="col">commentaire</th>
+  <th scope="col">niveau de satesfaction</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor="let commentaire of commentaires | async">
+  <td></td>
+  <td>{{commentaire.username}}</td>
+  <td>{{commentaire.commentaire}}</td>
+  <td>{{commentaire.niveaudesatesfaction}}</td>
+</tr>
+</tbody>
+</table>
+

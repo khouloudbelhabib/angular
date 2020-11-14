@@ -1,8 +1,17 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD:src/app/component/login/login.component.ts
 import { AuthenticationServiceService } from 'src/app/service/authentication-service.service';
 import { TokenStorageService } from 'src/app/service/token-storage.service';
 import { UserService } from 'src/app/service/user.service';
 
+=======
+import {NgForm} from '@angular/forms';
+import {AuthenticationServiceService} from '../../service/authentication-service.service';
+import {resolveProvidersRequiringFactory} from '@angular/compiler-cli/src/ngtsc/annotations/src/util';
+import {TokenStorageService} from '../../service/token-storage.service';
+import {UserService} from '../../service/user.service';
+import {User} from '../model/User';
+>>>>>>> 5cd801a788f6e6378b21543ae95280a96747ec4a:src/app/login/login.component.ts
 
 @Component({
   selector: 'app-login',
