@@ -1,34 +1,47 @@
-import {Component, OnInit} from '@angular/core';
-import {TokenStorageService} from './token-storage.service';
+import { Component, OnInit } from '@angular/core';
+import { User } from './model/User';
+import { TokenStorageService } from './service/token-storage.service';
+import { UserService } from './service/user.service';
+
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent  implements OnInit{
+export class AppComponent implements OnInit {
   title = 'auditappangular';
-  private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
   showModeratorBoard = false;
   username: string;
-  constructor(private tokenStorageService: TokenStorageService) { }
+  private user = new User();
+  constructor(private tokenStorageService: TokenStorageService, private userService: UserService) { }
 
-  // tslint:disable-next-line:typedef use-lifecycle-interface
-  ngOnInit() {
-    this.isLoggedIn = !!this.tokenStorageService.getToken();
+  ngOnInit(): void {
 
-    if (this.isLoggedIn) {
-      const user = this.tokenStorageService.getUser();
-      this.roles = user.roles;
-
-      this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
-      this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
-      this.username = user.username;
+    if (this.tokenStorageService.getToken()) {
+      this.getUserConnected();
+      this.username = this.user.login;
     }
   }
 
+  getUserConnected(): void {
+    if (this.tokenStorageService.getUsername()) {
+      console.log('this this.tokenStorageService.getUsername()', this.tokenStorageService.getUsername());
+      const username = this.tokenStorageService.getUsername();
+      this.userService.getUserByUsername(username).subscribe(data => {
+        this.user = data;
+        if (this.user.role.findIndex((item) => item.roleName === 'ROLE_ADMIN') < 0) {
+          this.showAdminBoard = true;
+          console.log('-----', this.showAdminBoard);
+        } else if (this.user.role.findIndex((item) => item.roleName === 'ROLE_MODERATOR') < 0) {
+          this.showModeratorBoard = true;
+        }
+      }, error => {
+      });
+    }
+  }
   // tslint:disable-next-line:typedef
   logout() {
     this.tokenStorageService.signOut();

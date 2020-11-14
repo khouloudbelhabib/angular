@@ -21,8 +21,8 @@ export class AuthenticationServiceService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${credentials}`
     });
-    console.log('credentials.username',credentials.username);
-    console.log('credentials.password',credentials.password);
+    console.log('credentials.username', credentials.username);
+    console.log('credentials.password', credentials.password);
 
     return this.http.post(AUTH_API + 'login', {
       username: credentials.username,

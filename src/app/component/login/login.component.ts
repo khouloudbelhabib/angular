@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {AuthenticationServiceService} from '../authentication-service.service';
-import {resolveProvidersRequiringFactory} from '@angular/compiler-cli/src/ngtsc/annotations/src/util';
-import {TokenStorageService} from '../token-storage.service';
+import { AuthenticationServiceService } from 'src/app/service/authentication-service.service';
+import { TokenStorageService } from 'src/app/service/token-storage.service';
+import { UserService } from 'src/app/service/user.service';
+
 
 @Component({
   selector: 'app-login',
@@ -15,26 +15,29 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = '';
   roles: string[] = [];
-
-  constructor( private authService: AuthenticationServiceService , private tokenStorage: TokenStorageService) { }
-
+  user: any;
+  constructor( private authService: AuthenticationServiceService , private tokenStorage: TokenStorageService,
+               private userService: UserService) { }
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
-      this.roles = this.tokenStorage.getUser().roles;
+      if ( this.tokenStorage.getUsername()) {
+        this.getUserConnected();
+      }
     }
   }
-  // tslint:disable-next-line:typedef
-  onSubmit() {
+
+  onSubmit(): void {
     this.authService.login(this.form).subscribe(
       data => {
-        console.log('token ',data)
+        console.log('this data data ', data);
+
         this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data.username);
 
         this.isLoginFailed = false;
         this.isLoggedIn = true;
-        this.roles = this.tokenStorage.getUser().roles;
+        this.getUserConnected();
         this.reloadPage();
       },
       err => {
@@ -48,4 +51,10 @@ export class LoginComponent implements OnInit {
     window.location.reload();
   }
 
+  getUserConnected(): void {
+    if ( this.tokenStorage.getUsername()) {
+      this.user = this.userService.getUserByUsername(this.tokenStorage.getUsername());
+      this.roles = this.user.roles;
+    }
+  }
 }
