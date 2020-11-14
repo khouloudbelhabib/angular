@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Observable} from 'rxjs';
-import {Reclamation} from '../model/Reclamation';
-import {ReclamationService} from '../../service/reclamation.service';
+import { Observable } from 'rxjs';
+import { Reclamation } from 'src/app/model/Reclamation';
+import { ReclamationService } from 'src/service/reclamation.service';
+
 
 @Component({
   selector: 'app-list-recommendation',

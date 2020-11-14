@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Commentaire} from '../model/Commentaire';
-import {Router} from '@angular/router';
-import {RisquesService} from '../../service/risques.service';
-import {CommentaireService} from '../../service/commentaire.service';
-
+import { Router } from '@angular/router';
+import { Commentaire } from 'src/app/model/Commentaire';
+import { CommentaireService } from 'src/service/commentaire.service';
 
 @Component({
   selector: 'app-ajoutcommentaire',

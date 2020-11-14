@@ -1,11 +1,7 @@
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpHandler, HttpRequest } from '@angular/common/http';
-<<<<<<< HEAD
 import { TokenStorageService } from '../service/token-storage.service';
-=======
-import {TokenStorageService} from '../../service/token-storage.service';
->>>>>>> 5cd801a788f6e6378b21543ae95280a96747ec4a
 
 
 const TOKEN_HEADER_KEY = 'Authorization';

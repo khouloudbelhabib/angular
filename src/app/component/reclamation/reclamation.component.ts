@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import {Reclamation} from '../model/Reclamation';
-import {ReclamationService} from '../../service/reclamation.service';
+import { Reclamation } from 'src/app/model/Reclamation';
+import { ReclamationService } from 'src/service/reclamation.service';
 
 
 @Component({

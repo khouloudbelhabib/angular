@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
-import {Risques} from '../model/risques';
-import {Commentaire} from '../model/Commentaire';
-import {UserService} from '../../service/user.service';
-import {RisquesService} from '../../service/risques.service';
-import {CommentaireService} from '../../service/commentaire.service';
+import { Commentaire } from 'src/app/model/Commentaire';
+import { CommentaireService } from 'src/service/commentaire.service';
+
 
 @Component({
   selector: 'app-listcommentaire',

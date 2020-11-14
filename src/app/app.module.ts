@@ -13,14 +13,16 @@ import { RisqueComponent } from './component/risque/risque.component';
 import { AuthenticationServiceService } from './service/authentication-service.service';
 import { TokenStorageService } from './service/token-storage.service';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { AjoutcommentaireComponent } from './ajoutcommentaire/ajoutcommentaire.component';
-import { EditrisqueComponent } from './editrisque/editrisque.component';
-import { ListRecommendationComponent } from './list-recommendation/list-recommendation.component';
-import { ListcommentaireComponent } from './listcommentaire/listcommentaire.component';
-import { ListedeclientComponent } from './listedeclient/listedeclient.component';
-import { ListederendezvousComponent } from './listederendezvous/listederendezvous.component';
-import { ReclamationComponent } from './reclamation/reclamation.component';
-import { RendezvousComponent } from './rendezvous/rendezvous.component';
+import { EditrisqueComponent } from './component/editrisque/editrisque.component';
+import { ListRecommendationComponent } from './component/list-recommendation/list-recommendation.component';
+import { ListcommentaireComponent } from './component/listcommentaire/listcommentaire.component';
+import { ListedeclientComponent } from './component/listedeclient/listedeclient.component';
+import { ListederendezvousComponent } from './component/listederendezvous/listederendezvous.component';
+import { ReclamationComponent } from './component/reclamation/reclamation.component';
+import { RendezvousComponent } from './component/rendezvous/rendezvous.component';
+import { AjoutcommentaireComponent } from './component/ajoutcommentaire/ajoutcommentaire.component';
+import { AuthInterceptor } from './_helpers/authInterceptor';
+
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -57,7 +59,7 @@ const appRoutes: Routes = [
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: TokenStorageService,
+      useClass: AuthInterceptor,
       multi: true
     },
     AuthenticationServiceService, TokenStorageService],

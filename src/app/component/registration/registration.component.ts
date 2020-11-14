@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD:src/app/component/registration/registration.component.ts
 import { AuthenticationServiceService } from 'src/app/service/authentication-service.service';
-=======
-import {AuthenticationServiceService} from '../../service/authentication-service.service';
->>>>>>> 5cd801a788f6e6378b21543ae95280a96747ec4a:src/app/registration/registration.component.ts
 
 @Component({
   selector: 'app-registration',
