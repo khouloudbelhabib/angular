@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {TokenStorageService} from './token-storage.service';
-import {User} from './model/User';
+import {User} from '../app/model/User';
 const API_URL = 'http://localhost:8090/user/';
 @Injectable({
   providedIn: 'root'

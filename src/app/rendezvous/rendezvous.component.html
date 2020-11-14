@@ -1,0 +1,26 @@
+<p> ajouter un rendez_vous </p>
+<div class="container">
+  <form #addrisqueform="ngForm" (ngSubmit)="addrendezvousformsubmit()">
+    <div class="form-group">
+
+    <div class="form-group">
+      <label for="lieu">lieu de rendez_vous</label>
+      <input type="text" class="form-control" required  [(ngModel)]="rendezvous.lieu" name="lieu">
+    </div>
+    <div class="form-group">
+      <label for="heurededebut">heure de debut de rendez_vous</label>
+      <input type="time" class="form-control" required  [(ngModel)]="rendezvous.heurededebut" name="heurededebut">
+    </div>
+    <div class="form-group">
+      <label for="heuredefin">heure de fin de rendez_vous</label>
+      <input type="time" class="form-control" required  [(ngModel)]="rendezvous.heuredefin" name="heuredefin">
+    </div>
+    <div class=".form_datetime">
+      <label for="date">date de rendez_vous</label>
+      <input type="date"   placeholder="YYYY-MM-DD" class="form-control" required  [(ngModel)]="rendezvous.date" name="date">
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</div>
+

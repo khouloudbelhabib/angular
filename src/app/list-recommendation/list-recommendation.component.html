@@ -1,0 +1,17 @@
+<table class="table table-bordered table-dark">
+  <thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">client</th>
+    <th scope="col">Reclamation</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let Reclamation of reclamations | async">
+    <td></td>
+    <td>{{Reclamation.username}}</td>
+    <td>{{Reclamation.reclamation}}</td>
+  </tr>
+  </tbody>
+</table>
+

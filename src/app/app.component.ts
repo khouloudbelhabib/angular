@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {TokenStorageService} from './token-storage.service';
-import {UserService} from './user.service';
+import {TokenStorageService} from '../service/token-storage.service';
+import {UserService} from '../service/user.service';
 
 @Component({
   selector: 'app-root',
