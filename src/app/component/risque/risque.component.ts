@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Risques } from 'src/app/model/risques';
 import { UserService } from 'src/app/service/user.service';
-import { RisquesService } from 'src/service/risques.service';
-
+import { RisquesService } from 'src/app/service/risques-service.service';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableDataSource} from '@angular/material/table';
 @Component({
   selector: 'app-risque',
   templateUrl: './risque.component.html',
@@ -12,7 +13,14 @@ import { RisquesService } from 'src/service/risques.service';
 })
 export class RisqueComponent implements OnInit {
   private risque;
+  public dataSource: any;
+  @ViewChild(MatPaginatorModule) paginator: MatPaginatorModule;
   risques: Observable<Risques[]>;
+  // tslint:disable-next-line:variable-name
+  private array: any;
+  public pageSize = 10;
+  public currentPage = 0;
+  public totalSize = 0;
   // tslint:disable-next-line:variable-name
   constructor(private userService: UserService , private  risquesService: RisquesService , private _route: Router) { }
 
@@ -21,9 +29,25 @@ export class RisqueComponent implements OnInit {
   }
 // tslint:disable-next-line:typedef
 private getRisques() {
-    this.risques =  this.risquesService.getRisqueList('get');
+     this.risquesService.getRisqueList('get').subscribe(
+      data => {this.risques = data.result;
+               this.dataSource = new MatTableDataSource<Element>(data);
+               this.dataSource.paginator = this.paginator;
+               this.array = data;
+               this.totalSize = this.array.length;
+               this.iterator();
+
+      }
+    );
 
 }
+  // tslint:disable-next-line:typedef
+  private iterator() {
+    const end = (this.currentPage + 1) * this.pageSize;
+    const start = this.currentPage * this.pageSize;
+    const part = this.array.slice(start, end);
+    this.dataSource = part;
+  }
   // tslint:disable-next-line:typedef
   gotoEditRisque(id: number){
     console.log('id' + id);

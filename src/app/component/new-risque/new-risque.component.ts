@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { Risques } from 'src/app/model/risques';
-import { RisquesService } from 'src/service/risques.service';
+import { RisquesService } from 'src/app/service/risques-service.service';
 
 @Component({
   selector: 'app-new-risque',

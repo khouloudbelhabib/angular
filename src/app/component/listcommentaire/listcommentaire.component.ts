@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Observable} from 'rxjs';
 import { Commentaire } from 'src/app/model/Commentaire';
-import { CommentaireService } from 'src/service/commentaire.service';
+import { CommentaireService } from 'src/app/service/commentaire.service';
 
 
 @Component({

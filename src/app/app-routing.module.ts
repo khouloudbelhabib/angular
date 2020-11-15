@@ -11,6 +11,7 @@ import { ReclamationComponent } from './component/reclamation/reclamation.compon
 import { RegistrationComponent } from './component/registration/registration.component';
 import { RendezvousComponent } from './component/rendezvous/rendezvous.component';
 import { RisqueComponent } from './component/risque/risque.component';
+import {ListederendezvousComponent} from './component/listederendezvous/listederendezvous.component';
 
 
 
@@ -28,7 +29,7 @@ const routes: Routes = [
   { path: 'ListReclamation', component: ListRecommendationComponent},
   { path: 'ajoutrendezvous', component: RendezvousComponent},
   { path: 'listdeclient', component: ListedeclientComponent},
-
+  { path: 'listderendezvous', component: ListederendezvousComponent},
 ];
 
 @NgModule({

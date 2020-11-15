@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Reclamation } from 'src/app/model/Reclamation';
-import { ReclamationService } from 'src/service/reclamation.service';
+import { ReclamationService } from 'src/app/service/reclamation.service';
 
 
 @Component({
