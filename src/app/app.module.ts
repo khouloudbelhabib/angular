@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {MatPaginatorModule} from '@angular/material/paginator/paginator-module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -25,14 +24,6 @@ import { AuthInterceptor } from './_helpers/authInterceptor';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatChipsModule } from '@angular/material/chips';
-import {MatInputModule} from '@angular/material/input/input-module';
-// @ts-ignore
-import {MdButtonModule, MdCheckboxModule} from '@angular/material';
-import { EventEmitter } from '@angular/core';
-
-
-
 
 
 const appRoutes: Routes = [
@@ -61,20 +52,12 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    MdButtonModule,
-    MdCheckboxModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule.forRoot(appRoutes),
     FormsModule,
-    MatInputModule,
-    MatPaginatorModule,
     FullCalendarModule,
-    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory }),
-    CalendarModule .forRoot( {
-      provide : DateAdapter ,
-      useFactory : adapterFactory ,
-    } ) ,
+    CalendarModule.forRoot({ provide: DateAdapter, useFactory: adapterFactory })
   ],
   providers: [
     {
