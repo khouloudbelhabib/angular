@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
 
 import {Observable} from 'rxjs';
 import {Risques} from '../model/risques';
@@ -10,10 +10,14 @@ import {Risques} from '../model/risques';
 export class RisquesService {
 // tslint:disable-next-line:ban-types
 public host: String = 'http://localhost:8090/risques/';
+headers = new HttpHeaders();
+
   constructor(private http: HttpClient) { }
   // tslint:disable-next-line:typedef
-  public getRisqueList(url): Observable<any>{
-    return this.http.get(this.host + url);
+  public getRisqueList(): Observable<any>{
+    this.headers.append('Accept', 'application/json;charset=UTF-8');
+    const options = { headers: this.headers };
+    return this.http.get(this.host +'get',options);
   }
   // tslint:disable-next-line:typedef
    public addRisqueToRemote( risques: Risques){

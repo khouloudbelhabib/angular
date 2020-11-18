@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
 
         this.tokenStorage.saveToken(data.token);
         this.tokenStorage.saveUser(data.username);
-
+        console.log(data.user);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.getUserConnected();
